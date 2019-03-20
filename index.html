@@ -17,197 +17,70 @@
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<meta name="author" content="ycts" >
+<meta name="author" content="liangshuche" >
 <meta charset="UTF-8">
 
 
-<title>Machine Learning (2018, Spring) - HW4</title>
+<title>Machine Learning (2019, Spring) - HW4</title>
 
 <xmp theme="united" style="display:none;">
 
 
 
-# <p class="text-h">Homework 4 - Unsupervised learning & dimension reduction</p>
+# <p class="text-h">Homework 4 - Explain your model</p>
 
 ### <p class="text-hh">Announcements</p>
+<!-- #### 3/28
+	
+* Sample code will be released at 03/28/2019 23:59:59 (GMT+8)
+* 手把手教學 release!
+* Deadline update! -->
+	
+#### 3/21
 
-#### 5/2
-
-* reconstruction開放jpg, png格式
-* 遲交表單已開放
-
-#### 5/1
-
-* pytorch 版本開放 0.2.0 or 0.3.0
-
-#### 4/28
-
-* part c : ensemble learning 部分更改為hw1/hw2/hw3皆可
-
-
-#### 4/22
-
-* 小老師表單公布
-
-#### 4/19
-
-* report part C : Ensemble Learning release
-
-#### 4/18
-
-* tensorflow版本更新為1.4
-
-#### 4/12
-
-* HW4 release!
+* HW4 release! 
 
 
 <hr>
 
 
 ### <p class="text-hh">Links</p>
-* 作業投影片 <a href="https://docs.google.com/presentation/d/1Y_1HeRDjR3LlSPhVSG1nYDAKNLt5nDQU8agM3vhO7ZQ/edit?usp=sharing" target="_blank"><i class="fa fa-book"></i></a>
-* Kaggle 連結 <a href="https://www.kaggle.com/t/75ab29dfd8224257b711dfcde619c801" target="_blank"><i class="fa fa-trophy"></i></a>
-* Report 模板 <a href="https://docs.google.com/document/d/1n4UL5E0h8a4xPnZ87pbkbB5hqdI0U1kkBwEXIFiGAtc/edit?usp=sharing" target="_blank"><i class="fa fa-file-text"></i></a>
-* 小老師表單 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhlQxjrsB31ULP7SEGyQMkBhh-jNXQCe42AfX4pj4N4PqDZw/viewform" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
-* 遲交表單 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkv3hLotNib4MK00tnySLzBDFklouHqLqY2I2g12V2stzThw/viewform" target="_blank"><i class="fa fa-clock-o"></i></a>
-* Facebook Group <a href="https://www.facebook.com/groups/358842527926029/" target="_blank"><i class="fa fa-facebook-square"></i></a>
-
-
-<hr>
-
-### <p class="text-hh">Lecture Slides</p>
-
-* Week6(4/12/2018): PCA  <a href="https://ceiba.ntu.edu.tw/course/c981c6/content/W6a_PCA%20(v3).pdf">[pdf]</a>
-* Week6(4/12/2018): TSNE  <a href="https://ceiba.ntu.edu.tw/course/c981c6/content/W6b_TSNE.pdf">[pdf]</a>
-* Week7(4/19/2018): Ensemble  <a href="https://ceiba.ntu.edu.tw/course/c981c6/content/W7a_Ensemble.pdf">[pdf]</a>
-* Week7(4/19/2018): Deep Auto-encoder  <a href="https://ceiba.ntu.edu.tw/course/c981c6/content/W7b_auto.pdf">[pdf]</a>
-
-
-
+* 作業投影片 <a href="https://docs.google.com/presentation/d/13DLRxu8vzMhyAPbXMglJ5R-a7V9XMIqVEbM-PiRmXWk/edit?usp=sharing" target="_blank"><i class="fa fa-book"></i></a>
+* Report 模板 <a href="https://goo.gl/JCijVR" target="_blank"><i class="fa fa-file-text"></i></a>
+* (有遲交的同學才需填寫)遲交表單 <a href="https://goo.gl/forms/5ctgJjCkgYdDndOh1" target="_blank"><i class="fa fa-clock-o"></i></a>
+<!-- * Sample code (Logictic regression) <a href="./LogisticRegression.html" target="_blank"><i class="fa fa-book"></i></a> -->
+<!-- * Sample code (Generative model) <a href="./ProbabilisticGenerativeModel.html" target="_blank"><i class="fa fa-book"></i></a> -->
+<!-- * 手把手教學投影片 <a href="#" target="_blank"><i class="fa fa-book"></i></a> -->
 <hr>
 
 
 ### <p class="text-hh">Deadlines</p>
-* Simple Bonus Deadline: 4/25/2018 23:59:59 (GMT+8)
-* Kaggle Deadline: 5/02/2018 23:59:59 (GMT+8)
-* Github Deadline: 5/03/2018 23:59:59 (GMT+8)
+* Github Deadline: 04/12/2019 23:59:59 (GMT+8)
 
 <hr>
 
-### <p class="text-hh">Report</p>
-#### <p class="text-hh">Part A : PCA of colored faces</p>
+### <p class="text-hh">Assignment Regulation</p>
 
-* 作業要求：
-  * (.5%) 請畫出所有臉的平均。
-  * (.5%) 請畫出前四個 Eigenfaces，也就是對應到前四大 Eigenvalues 的 Eigenvectors。
-  * (.5%) 請從數據集中挑出任意四個圖片，並用前四大 Eigenfaces 進行 reconstruction，並畫出結果。
-  * (.5%) 請寫出前四大 Eigenfaces 各自所佔的比重 (explained variance ratio)，請四捨五入到小數點後一位。
-
-#### <p class="text-hh">Part B : Image clustering</p>
-
-* 作業要求: 
-  * (.5%) 請比較至少兩種不同的 feature extraction 及其結果。
-  * (.5%) 預測 visualization.npy 中的 label，在二維平面上視覺化 label 的分佈。
-  * (.5%) visualization.npy 中前 5000 個 images 來自 dataset A，後 5000 個 images 來自 dataset B。請根據這個資訊，在二維平面上視覺化 label 的分佈，接著比較和自己預測的 label 之間有何不同。
-  * (visualization.npy 將在 Kaggle deadline 之後公布在 Kaggle 上)
-
-#### <p class="text-hh">Part C : Ensemble Learning</p>
-  * (1.5%) 請在hw1/hw2/hw3的task上擇一實作ensemble learning，請比較其與未使用ensemble method的模型在 public/private score 的表現並詳細說明你實作的方法。（所有跟ensemble learning有關的方法都可以，不需要像hw3的要求硬塞到同一個model中）
-
-### <p class="text-hh">Rules</p>
-
-* Basic : No extra dataset. No plagiarism.
-* Allowed toolkits for "PCA of colored faces":
-  * NumPy 1.13+
-  * scikit-image 0.13+
-  * Python Standard Lib
-
-
-* Allowed toolkits for "Image clustering":
-  * python 3.5+
-  * tensorflow 1.4
-  * keras 2.0.8
-  * pytorch 0.2.0 or 0.3.0
-  * scikit-image 0.13+
-  * pillow 4.3.0
-  * scikit-learn 0.19+
-  * pandas 0.20+
-  * numpy
-  * scipy
-  * matplotlib
-  * h5py
-  * Python Standard Lib
-
+* Only Python 3.6 available !!!!  
+* python standard library
+* numpy >=1.14
+* pandas >= 0.24.1
+* Pytorch == 1.0.1
+* Tensorflow == 1.12.0
+* Keras == 2.2.4
+* matplotlib == 3.0.3
+* scikit-image == 0.14.2 (Please update manually via pip)
+* lime == 0.1.1.33 (Install via pip)
+<!-- * 不可以使用 xgboost, AdaBoostClassifier, ExtraTreesClassifier -->
+	
 <hr>
 
 ### <p class="text-hh">FAQ</p>
 
-#### <p class="text-hh">hw4</p>
-
-Q1: 可以用 python standard library ㄇ?  
-A1: 可以，所有作業都可以用，只要在這上面都可以: https://docs.python.org/3/library/
-
-Q2: 這次report有頁數限制ㄇ?  
-A2: 沒有，但是可以盡量控制在三頁以內，除此之外，圖片的解析度務必注意，在轉成pdf的時候可以把畫質調成最佳之類的。
-
-Q3: 這次作業如果一個part reproduce不出來就是扣整份的分數ㄇ?  
-A3: 由於這次作業比較特別，如果PCA跑不出來，那就拿不到report中PCA題目的分數；而如果image klustering跑不出來，則會拿不到kaggle/report中image klustering題目的分數。
-
-Q4: 我很擔心我花三個禮拜寫的code因為怪地方慘掉，有什麼方法可以檢查ㄇ?  
-A4: 這邊可以提供幾個方法：
-
-* 跟另外一位同學交換執行code，一路從檢查kaggle名稱/github下載/檢查資料夾路徑到執行script等等。
-* 執行助教的版本檢查scirpt（這週末會realease，僅供參考用）
-* 佛系programmer，不檢查，不看規則，不版本控制，deadline一到自然會reproduce出來。
-
-#### <p class="text-hh">part I : PCA</p>
-
-Q1: 在算mean face的時候影像的RGB值會產生小數點，但是儲存時只能存整數，所以要無條件捨去是嗎？  
-A1: 沒錯要存整數，可以加上 .astype(np.uint8)。  
-
-Q2: 想請問助教 在做PCA的時候若遇到covariance matrix太大導致記憶體爆炸的情況是怎麼做處理的呢？  
-A2: 請使用 full_matrices=false。  
-
-Q3: 我已經調成 full_matrices=false 卻還是跑不動，請問大概需要多少RAM呢？  
-A3: 根據助教這邊經驗大概需要10G左右。  
-
-Q4: 如果在自己的電腦上執行 reconstruct 會超過三分鐘該怎辦呢？  
-A4: 請不用擔心助教這邊會用工作站幫大家跑，只要記得用full_matrices=false應該都不會超過限定的時間。  
-
-Q5: 請問投影片上給的那張第10張eigenface是有用eigenvalue排序由大到小的順序嗎？  
-A5: 是的，正好是第十個eigenface。  
-
-Q6: 第k個eigenface會有唯一解嗎？為什麼我做出來跟其他人或者助教的都差一個負號?  
-A6: 嚴格來說，會有兩種解，兩種之間差負號，Report上放任一種都可以。  
-
-Q7: eigenfaces各自所佔的比重，如果四捨五入到小數點後一位，就全部都是0了？  
-A7: 先用百分比表示，然後四捨五入到小數後一位。
-
-Q8: 第一題SVD的結果三個矩陣 可以先算好上傳到github給程式直接讀取嗎 ?  
-A8: 請勿直接讀取預先儲存的矩陣。
-
-#### <p class="text-hh">part II : Image Clustering</p>
-
-#### <p class="text-hh">part III : Ensemble Learning</p>
-
-Q1: 這題要上傳code嗎？  
-A1: 要，格式為ML2018SPRING/hw4/ensemble.py。  
-
-Q2: 這題要上傳script嗎?  
-A2: 不用。  
-
-Q3: 這題要上傳model嗎?有限制model數量嗎？  
-A3: 不用。
 
 
-
-
-
-
-
-
-
+<p>Q1：請問kaggle的組隊人數上限？</p>
+<p>A1：hw4沒有kaggle哦^^。</p>
 
 
 <hr>
@@ -216,11 +89,9 @@ A3: 不用。
 <script src="strapdown.js"></script> 
 
 
-
 <footer>
-  <center><i class="fa fa-github"></i></a> Posted by: <a href="https://github.com/ycts/" target="_blank">Yen Ching Tseng</a>.</center>
-  <center><i class="fa fa-envelope"></i> Contact info: <a href="mailto:"> ntumlta2018@gmail.com </a>.</center>
-  <center><i class="fa fa-mortar-board"></i> Course website: <a href="http://163.28.17.129/mlcourse/#", target="_blank">Machine Learning (2018, Spring) @ National Taiwan University</a>.</center>
+  <center><i class="fa fa-envelope"></i> Contact info: <a href="mailto:"> ntumlta2019@gmail.com </a>.</center>
+  <center><i class="fa fa-mortar-board"></i> Course website: <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html", target="_blank">Machine Learning (2019, Spring) @ National Taiwan University</a>.</center>
   <center><i class="fa fa-cc"></i> Based on <a href="https://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="https://fontawesome.com" target="_blank">Font-Awesome</a>. Web fonts from <a href="https://fonts.google.com" target="_blank">Google</a>.</center>
 </footer>
 
